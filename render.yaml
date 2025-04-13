@@ -5,3 +5,8 @@ services:
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn app:app"
     plan: free
+
+cronJobs:
+  - name: daily-scraper
+    schedule: "0 20 * * *"  # JST 5:00 (UTC 20:00)
+    command: "python cron.py"
