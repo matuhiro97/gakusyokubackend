@@ -27,8 +27,10 @@ def scrape_category(a_value):
         a_tag = li.find("a")
         if not a_tag:
             continue
+
         img_tag = li.find("img")
-        img_url = BASE_IMG_URL + img_tag.get("src") if img_tag else ""
+        img_src = img_tag.get("src") if img_tag else ""
+        img_url = img_src if img_src.startswith("http") else BASE_IMG_URL + img_src
 
         h3 = a_tag.find("h3")
         if not h3:
